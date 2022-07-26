@@ -30,12 +30,17 @@ public class BoardService {
         System.out.println("이미지 파일 이름: " + imageFileName);
         Path imageFilePath = Paths.get(uploadFolder+imageFileName);
 
+        if (boardWriteDto.getImage_file().isEmpty()){
+            System.out.println("사진이 업로드 되지 않았습니다.");
+        }
+        else{
         // 통신, I/O -> 예외가 발생할 수 있음
-        try {
-            Files.write(imageFilePath, boardWriteDto.getImage_file().getBytes());
-            System.out.println(imageFileName + " 업로드 성공!");
-        } catch (Exception e){
-            e.printStackTrace();
+            try {
+                Files.write(imageFilePath, boardWriteDto.getImage_file().getBytes());
+                System.out.println(imageFileName + " 업로드 성공!");
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         // DB에 저장하기

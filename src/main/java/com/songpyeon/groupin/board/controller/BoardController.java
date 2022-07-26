@@ -14,8 +14,8 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/write")
-    public String writePage(){
-        return "write";
+    public void writePage(){
+
     }
 
     @PostMapping("/write")
