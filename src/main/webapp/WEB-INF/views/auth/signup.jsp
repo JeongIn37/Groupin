@@ -28,10 +28,11 @@
                     <!--회원가입 인풋-->
                     <form class="login__input" action="/auth/signup" method="post">
                         <!--사용자가 입력한 데이터 들고 /auth/signup으로 post 요청-->
-                        <input type="text" name="username" placeholder="유저네임" required="required" />
+                        <input type="text" name="id" placeholder="아이디" required="required" />
                         <input type="password" name="password" placeholder="패스워드" required="required" />
                         <input type="email" name="email" placeholder="이메일" required="required" />
-                        <input type="text" name="name" placeholder="이름" required="required" />
+                        <input type="text" name="nickname" placeholder="닉네임" required="required" />
+                        <input type="text" name="region" placeholder="지역" required="required" />
                         <button>가입</button>
                     </form>
                     <!--회원가입 인풋end-->
