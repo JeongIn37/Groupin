@@ -1,5 +1,6 @@
 package com.songpyeon.groupin.board.domain;
 
+import com.songpyeon.groupin.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 // JPA - Java Persistence API (자바로 데이터를 영구적으로 저장할 수 있는 API를 제공)
@@ -23,12 +25,14 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략이 DB를 따라감 (mysql-AutoIncrement, oracle-sequence )
     private int id;
 
-    @Column(name="category", nullable = false)
+    @Column(name="category")
+    @NotNull
     private String category;
 
-    //@JoinColumn(name = "user_id")
-    //@ManyToOne
-    //private User user;    // user와 board는 1:N
+    @JoinColumn(name="user_id")
+    @ManyToOne
+    @NotNull
+    private User user;    // user와 board는 1:N
 
     private boolean is_notice;
     private LocalDateTime created_at;

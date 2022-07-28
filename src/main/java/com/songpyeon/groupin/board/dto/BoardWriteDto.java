@@ -1,6 +1,7 @@
 package com.songpyeon.groupin.board.dto;
 
 import com.songpyeon.groupin.board.domain.Board;
+import com.songpyeon.groupin.user.User;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Data
 public class BoardWriteDto {
 
+    private User user;
     private String category;
     private String title;
     private String region;
@@ -31,7 +33,7 @@ public class BoardWriteDto {
                 .recommend(recommend)
                 .group_notice(group_notice)
                 .group_image_url(group_image_url)
-                //.user(user)   추가 필요
+                .user(user)
                 .build();
 
     }
