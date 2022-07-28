@@ -10,5 +10,6 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {  //<오
 
     // JPA query method
     List<Board> findByCategory(String category);
+    Board findByCategoryAndId(String category, int id);
 
 }

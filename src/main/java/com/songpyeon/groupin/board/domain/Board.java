@@ -65,4 +65,5 @@ public class Board {
     @PreUpdate  // update 되기 직전 실행
     public void updated_at() { this.updated_at = LocalDateTime.now(); }
 
+
 }

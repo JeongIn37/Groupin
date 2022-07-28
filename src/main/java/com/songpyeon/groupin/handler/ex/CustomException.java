@@ -1,12 +1,13 @@
 package com.songpyeon.groupin.handler.ex;
 
-import java.util.Map;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public class CustomException extends RuntimeException{
     private static final long serialVersionUID = 1L;
-
-    public CustomException(String message){
-        super(message);
-    }
+    private final ErrorCode errorCode;
 
 }

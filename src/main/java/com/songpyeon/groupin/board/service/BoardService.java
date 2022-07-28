@@ -5,11 +5,15 @@ import com.songpyeon.groupin.board.dto.BoardWriteDto;
 import com.songpyeon.groupin.board.repository.BoardRepository;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.handler.ex.CustomException;
+import com.songpyeon.groupin.handler.ex.ErrorCode;
+import com.songpyeon.groupin.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.HttpMediaTypeNotAcceptableException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.nio.file.Files;
@@ -28,15 +32,10 @@ public class BoardService {
 
 
     // 카테고리별 글 리스트 불러오기
-    public List<Board> listByCategory(@PathVariable String category){
+    public List<Board> listByCategory(@PathVariable String category) {
         // SELECT * FROM Board where category = :category;
-        if (category.isBlank() | category.isEmpty()){
-           throw new CustomException("잘못된 접근입니다.");
-        }
-        else {
-            List<Board> boardEntity = boardRepository.findByCategory(category);
-            return boardEntity;
-        }
+        List<Board> boardEntity = boardRepository.findByCategory(category);
+        return boardEntity;
     }
 
 
@@ -70,8 +69,12 @@ public class BoardService {
     }
 
     // 글 상세보기
-    public void detail(@PathVariable String category, @PathVariable int boardId){
-
+    public Board detail(@PathVariable String category, @PathVariable int id){
+        Board boardEntity = boardRepository.findByCategoryAndId(category, id);
+        if (boardEntity == null){
+            throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
+        }
+        return boardEntity;
     }
 
 }

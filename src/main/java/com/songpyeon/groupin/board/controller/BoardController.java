@@ -4,6 +4,8 @@ import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.dto.BoardWriteDto;
 import com.songpyeon.groupin.board.service.BoardService;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.handler.ex.CustomException;
+import com.songpyeon.groupin.handler.ex.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
@@ -33,7 +35,8 @@ public class BoardController {
     }
 
     @GetMapping("/{category}/{boardId}")
-    public void postDetail(@PathVariable String category, @PathVariable int boardId){
-        boardService.detail(category, boardId);
+    public Board postDetail(@PathVariable String category, @PathVariable int boardId) {
+        Board boardEntity = boardService.detail(category, boardId);
+        return boardEntity;
     }
 }
