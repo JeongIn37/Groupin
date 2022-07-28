@@ -45,9 +45,10 @@ public class Board {
     private String max_participants;
     @Column(nullable = false)
     private String group_info;
-    private String group_image_url; // 사진을 전송 받아서 사진을 서버 특정 폴더에 저장 - DB에 그 저장된 경로를 insert
     private String recommend;
     private String group_notice;
+    private String group_image_url; // 사진을 전송 받아서 사진을 서버 특정 폴더에 저장 - DB에 그 저장된 경로를 insert
+
 
     public Integer getId() {
         return id;

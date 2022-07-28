@@ -4,17 +4,17 @@ import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.dto.BoardWriteDto;
 import com.songpyeon.groupin.board.service.BoardService;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
-import com.songpyeon.groupin.handler.ex.CustomException;
-import com.songpyeon.groupin.handler.ex.ErrorCode;
+import com.songpyeon.groupin.config.auth.PrincipalDetailsService;
+import com.songpyeon.groupin.user.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,20 +23,46 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/{category}/list")
-    public List<Board> postList(@PathVariable String category){
+    public ResponseEntity<List<Board>> postList(@PathVariable String category){
         List<Board> boardEntity = boardService.listByCategory(category);
-        return boardEntity;
-    }
-
-    @PostMapping("/{category}/write")
-    public void write(@PathVariable String category, BoardWriteDto boardWriteDto, @AuthenticationPrincipal PrincipalDetails principalDetails){
-        // 서비스 호출
-        boardService.save(category, boardWriteDto, principalDetails);
+        //return boardEntity;
+        return new ResponseEntity<>(boardEntity, HttpStatus.OK);
     }
 
     @GetMapping("/{category}/{boardId}")
-    public Board postDetail(@PathVariable String category, @PathVariable int boardId) {
-        Board boardEntity = boardService.detail(category, boardId);
-        return boardEntity;
+    public ResponseEntity<Board> postDetail(@PathVariable String category, @PathVariable int boardId) {
+        Board boardEntity = boardService.postDetail(category, boardId);
+        return new ResponseEntity<>(boardEntity, HttpStatus.OK);
+        //return boardEntity;
     }
+
+    @PostMapping("/{category}/write")
+    public ResponseEntity<Object> writePost(@PathVariable String category, BoardWriteDto boardWriteDto, @AuthenticationPrincipal PrincipalDetails principalDetails){
+        // 서비스 호출
+        Board boardEntity = boardService.savePost(category, boardWriteDto, principalDetails);
+        return new ResponseEntity<>(boardEntity, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{category}/{boardId}/edit")
+    public ResponseEntity<Object> editPost(@PathVariable String category, @PathVariable int boardId, Board board){
+        Board boardEntity = boardService.editPage(category, boardId, board);
+        return new ResponseEntity<>(boardEntity, HttpStatus.OK);
+    }
+
+    @PatchMapping("/{category}/{boardId}/edit")
+    public ResponseEntity<Object> editPost(@PathVariable String category, @PathVariable int boardId, Board board, BoardWriteDto boardWriteDto){
+        Board boardEntity = boardService.editPost(category, boardId, board, boardWriteDto);
+        return new ResponseEntity<>(boardEntity, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{category}/{boardId}/delete")
+    public ResponseEntity<Object> deletePost(@PathVariable String category, @PathVariable int boardId, @AuthenticationPrincipal PrincipalDetails principalDetails, @AuthenticationPrincipal PrincipalDetailsService principalDetailsService){
+        //User userEntity = (User) principalDetailsService.loadUserByUsername(principalDetails.getUsername());
+        boardService.deletePost(category, boardId);
+
+        Map<String, String> map = new HashMap<>();
+        map.put("result", "삭제 완료");
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
 }
