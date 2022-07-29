@@ -5,13 +5,17 @@ import com.songpyeon.groupin.board.dto.BoardWriteDto;
 import com.songpyeon.groupin.board.service.BoardService;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.config.auth.PrincipalDetailsService;
+import com.songpyeon.groupin.handler.ex.CustomValidationException;
 import com.songpyeon.groupin.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,8 +48,8 @@ public class BoardController {
     }
 
     @GetMapping("/{category}/{boardId}/edit")
-    public ResponseEntity<Object> editPost(@PathVariable String category, @PathVariable int boardId, Board board){
-        Board boardEntity = boardService.editPage(category, boardId, board);
+    public ResponseEntity<Object> editPost(@PathVariable String category, @PathVariable int boardId, @AuthenticationPrincipal PrincipalDetails principalDetails){
+        Board boardEntity = boardService.editPage(category, boardId, principalDetails);
         return new ResponseEntity<>(boardEntity, HttpStatus.OK);
     }
 
@@ -56,10 +60,9 @@ public class BoardController {
     }
 
     @DeleteMapping("/{category}/{boardId}/delete")
-    public ResponseEntity<Object> deletePost(@PathVariable String category, @PathVariable int boardId, @AuthenticationPrincipal PrincipalDetails principalDetails, @AuthenticationPrincipal PrincipalDetailsService principalDetailsService){
+    public ResponseEntity<Object> deletePost(@PathVariable String category, @PathVariable int boardId, @AuthenticationPrincipal PrincipalDetails principalDetails){
         //User userEntity = (User) principalDetailsService.loadUserByUsername(principalDetails.getUsername());
-        boardService.deletePost(category, boardId);
-
+        boardService.deletePost(category, boardId, principalDetails);
         Map<String, String> map = new HashMap<>();
         map.put("result", "삭제 완료");
         return new ResponseEntity<>(map, HttpStatus.OK);
