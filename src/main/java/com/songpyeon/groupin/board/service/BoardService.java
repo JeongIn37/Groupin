@@ -74,6 +74,7 @@ public class BoardService {
         if (boardEntity == null){
             throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
         }
+        boardRepository.updateViewCount(id);
         return boardEntity;
     }
 
