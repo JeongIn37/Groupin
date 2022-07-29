@@ -4,18 +4,12 @@ import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.dto.BoardWriteDto;
 import com.songpyeon.groupin.board.service.BoardService;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
-import com.songpyeon.groupin.config.auth.PrincipalDetailsService;
-import com.songpyeon.groupin.handler.ex.CustomValidationException;
-import com.songpyeon.groupin.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
