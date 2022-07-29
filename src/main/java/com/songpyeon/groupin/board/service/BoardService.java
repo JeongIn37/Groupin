@@ -48,9 +48,9 @@ public class BoardService {
 
         if (boardWriteDto.getImage_file().isEmpty()){
             System.out.println("사진이 업로드 되지 않았습니다.");
+            imageFileName = null;
         }
         else{
-        // 통신, I/O -> 예외가 발생할 수 있음
             try {
                 Files.write(imageFilePath, boardWriteDto.getImage_file().getBytes());
                 System.out.println(imageFileName + " 업로드 성공!");
@@ -117,6 +117,7 @@ public class BoardService {
 
         if (boardWriteDto.getImage_file().isEmpty()){
             System.out.println("사진이 업로드 되지 않았습니다.");
+            post.setGroup_image_url(null);
         } else {
             try {
                 Files.write(imageFilePath, boardWriteDto.getImage_file().getBytes());
