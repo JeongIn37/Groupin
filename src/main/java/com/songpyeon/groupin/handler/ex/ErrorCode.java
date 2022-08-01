@@ -24,6 +24,8 @@ public enum ErrorCode {
 
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "사용자 정보를 찾을 수 없습니다."),
 
+    NO_APPLY_FOUND(HttpStatus.NOT_FOUND, "신청 정보를 찾을 수 없습니다."),
+
     ;
 
     private final HttpStatus status;
