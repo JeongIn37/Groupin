@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 // JPA - Java Persistence API (자바로 데이터를 영구적으로 저장할 수 있는 API를 제공)
 
-@Builder // User <- SignupDto 넣기 위해 사용
+@Builder // Board <- BoardWriteDto 넣기 위해 사용
 @AllArgsConstructor // 전체 생성자
 @NoArgsConstructor  // 빈 생성자
 @Data   // Getter & Setter

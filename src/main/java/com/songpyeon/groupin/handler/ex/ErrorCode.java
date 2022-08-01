@@ -22,6 +22,8 @@ public enum ErrorCode {
 
     NO_AUTHORITY(HttpStatus.FORBIDDEN, "권한이 없습니다."),
 
+    USER_NOT_FOUND(HttpStatus.NOT_FOUND, "사용자 정보를 찾을 수 없습니다."),
+
     ;
 
     private final HttpStatus status;
