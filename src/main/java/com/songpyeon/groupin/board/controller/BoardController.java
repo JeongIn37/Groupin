@@ -5,6 +5,8 @@ import com.songpyeon.groupin.board.dto.BoardWriteDto;
 import com.songpyeon.groupin.board.service.BoardService;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -22,9 +24,14 @@ public class BoardController {
 
     @GetMapping("/{category}/list")
     public ResponseEntity<List<Board>> postList(@PathVariable String category){
-        List<Board> boardEntity = boardService.listByCategory(category);
-        //return boardEntity;
+        List<Board> boardEntity = boardService.postList(category);
         return new ResponseEntity<>(boardEntity, HttpStatus.OK);
+    }
+
+    @GetMapping("/{category}")
+    public ResponseEntity<Page<Board>> postsByType(@PathVariable String category, @RequestParam String type, @RequestParam int page){
+        Page<Board> pageEntity = boardService.postsByType(category, type, page);
+        return new ResponseEntity<>(pageEntity, HttpStatus.OK);
     }
 
     @GetMapping("/{category}/{boardId}")

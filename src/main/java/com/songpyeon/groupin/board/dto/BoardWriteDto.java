@@ -1,9 +1,14 @@
 package com.songpyeon.groupin.board.dto;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.user.User;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.persistence.Column;
+import java.time.LocalDateTime;
 
 @Data
 public class BoardWriteDto {
@@ -12,24 +17,31 @@ public class BoardWriteDto {
     private String category;
     private String title;
     private String region;
-    private String max_participants;
-    private String group_info;
-    private MultipartFile image_file;
+    @Column(name="max_participants")
+    private String maxParticipants;
+    @Column(name="group_info")
+    private String groupInfo;
+    private MultipartFile imageFile;
     //private String group_image_url;
     private String recommend;
-    private String group_notice;
+    @Column(name="group_notice")
+    private String groupNotice;
 
-    public Board toEntity(String group_image_url){  // User user 추가 필요
+
+
+
+
+    public Board toEntity(String groupImageUrl){  // User user 추가 필요
 
         return Board.builder()
                 .category(category)
                 .title(title)
                 .region(region)
-                .max_participants(max_participants)
-                .group_info(group_info)
+                .maxParticipants(maxParticipants)
+                .groupInfo(groupInfo)
                 .recommend(recommend)
-                .group_notice(group_notice)
-                .group_image_url(group_image_url)
+                .groupNotice(groupNotice)
+                .groupImageUrl(groupImageUrl)
                 .user(user)
                 .build();
 

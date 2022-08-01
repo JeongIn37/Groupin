@@ -12,6 +12,10 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
 
+  # json data를 snake_case로 전달하기 위해 설정
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://localhost:3306/groupin?serverTimezone=Asia/Seoul
@@ -46,4 +50,6 @@ spring:
 
 file:
   path: /Users/jeongin/WORKSPACE/Spring/upload/
+
+
 

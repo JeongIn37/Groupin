@@ -1,6 +1,8 @@
 package com.songpyeon.groupin.board.repository;
 
 import com.songpyeon.groupin.board.domain.Board;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +20,6 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {  //<오
     @Query("update Board p set p.views = p.views + 1 where p.id = :id")
     int updateViewCount(int id);
 
+    // 페이징 + 정렬
+    Page<Board> findAllByCategory(String category, Pageable pageable);
 }

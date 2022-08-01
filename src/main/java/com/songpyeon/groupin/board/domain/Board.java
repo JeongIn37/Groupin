@@ -1,5 +1,6 @@
 package com.songpyeon.groupin.board.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.songpyeon.groupin.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +25,6 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략이 DB를 따라감 (mysql-AutoIncrement, oracle-sequence )
     private int id;
 
-    @Column(name="category")
     @NotNull
     private String category;
 
@@ -33,20 +33,25 @@ public class Board {
     @NotNull
     private User user;    // user와 board는 1:N
 
-    private boolean is_notice;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+    private boolean notice;
+    @Column(name="created_at")
+    private LocalDateTime createdAt;
+    @Column(name="updated_at")
+    private LocalDateTime updatedAt;
     @Column(nullable = false, length = 50)
     private String title;
     private int views;
     private int comments;
     private String region;
-    private String max_participants;
-    @Column(nullable = false)
-    private String group_info;
+    @Column(name="max_participants")
+    private String maxParticipants;
+    @Column(name="group_info")
+    private String groupInfo;
     private String recommend;
-    private String group_notice;
-    private String group_image_url; // 사진을 전송 받아서 사진을 서버 특정 폴더에 저장 - DB에 그 저장된 경로를 insert
+    @Column(name="group_notice")
+    private String groupNotice;
+    @Column(name="group_image_url")
+    private String groupImageUrl; // 사진을 전송 받아서 사진을 서버 특정 폴더에 저장 - DB에 그 저장된 경로를 insert
 
 
     public Integer getId() {
@@ -59,11 +64,11 @@ public class Board {
 
     @PrePersist // DB에 insert 되기 직전에 실행
     public void created_at(){
-        this.created_at = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
     }
 
     @PreUpdate  // update 되기 직전 실행
-    public void updated_at() { this.updated_at = LocalDateTime.now(); }
+    public void updated_at() { this.updatedAt = LocalDateTime.now(); }
 
 
 }

@@ -8,6 +8,11 @@ import com.songpyeon.groupin.handler.ex.CustomException;
 import com.songpyeon.groupin.handler.ex.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -28,31 +33,35 @@ public class BoardService {
 
 
     // 카테고리별 글 리스트 불러오기
-    public List<Board> listByCategory(@PathVariable String category) {
+    public List<Board> postList(@PathVariable String category) {
         // SELECT * FROM Board where category = :category;
         List<Board> boardEntity = boardRepository.findByCategory(category);
         return boardEntity;
     }
 
+    public Page<Board> postsByType(String category, String type, int page){
+        PageRequest pageRequest = PageRequest.of(page, 2, Sort.by(Sort.Direction.DESC, type));
+        Page<Board> pageEntity = boardRepository.findAllByCategory(category, pageRequest);
+        List<Board> content = pageEntity.getContent();
+        //System.out.println("콘텐츠: " + content + "\n\n" + "페이지 엔티티: " + pageEntity);
+        return pageEntity;
+    }
+
 
     // 글 작성하기
-    /*
-    * 수정할 것
-    *  - 이미지가 업로드 되지 않을 때에도 DB에 UUID가 저장됨
-    * */
     public Board savePost(@PathVariable String category, BoardWriteDto boardWriteDto, PrincipalDetails principalDetails){
 
         UUID uuid = UUID.randomUUID();  //UUID: 파일명과 별개로 고유한 아이디를 만들기 위해 사용하는 규약
-        String imageFileName = uuid+"_"+boardWriteDto.getImage_file().getOriginalFilename(); // 업로드하려는 실제 파일명이 들어가는 부분
+        String imageFileName = uuid+"_"+boardWriteDto.getImageFile().getOriginalFilename(); // 업로드하려는 실제 파일명이 들어가는 부분
         Path imageFilePath = Paths.get(uploadFolder+imageFileName);
 
-        if (boardWriteDto.getImage_file().isEmpty()){
+        if (boardWriteDto.getImageFile().isEmpty()){
             System.out.println("사진이 업로드 되지 않았습니다.");
             imageFileName = null;
         }
         else{
             try {
-                Files.write(imageFilePath, boardWriteDto.getImage_file().getBytes());
+                Files.write(imageFilePath, boardWriteDto.getImageFile().getBytes());
                 System.out.println(imageFileName + " 업로드 성공!");
             } catch (Exception e){
                 e.printStackTrace();
@@ -105,26 +114,29 @@ public class BoardService {
 
         post.setTitle(board.getTitle());
         post.setRegion(board.getRegion());
-        post.setMax_participants(board.getMax_participants());
-        post.setGroup_info(board.getGroup_info());
+        post.setMaxParticipants(board.getMaxParticipants());
+        post.setGroupInfo(board.getGroupInfo());
         post.setRecommend(board.getRecommend());
-        post.setGroup_notice(board.getGroup_notice());
+        post.setGroupNotice(board.getGroupNotice());
+
+//        boardWriteDto.toEntity();
+//        return boardRepository.save(board);
 
         // 이미지 처리
         UUID uuid = UUID.randomUUID();
-        String imageFileName = uuid+"_"+boardWriteDto.getImage_file().getOriginalFilename(); // 업로드하려는 실제 파일명이 들어가는 부분
+        String imageFileName = uuid+"_"+boardWriteDto.getImageFile().getOriginalFilename(); // 업로드하려는 실제 파일명이 들어가는 부분
         Path imageFilePath = Paths.get(uploadFolder+imageFileName);
 
-        if (boardWriteDto.getImage_file().isEmpty()){
+        if (boardWriteDto.getImageFile().isEmpty()){
             System.out.println("사진이 업로드 되지 않았습니다.");
-            post.setGroup_image_url(null);
+            post.setGroupImageUrl(null);
         } else {
             try {
-                Files.write(imageFilePath, boardWriteDto.getImage_file().getBytes());
+                Files.write(imageFilePath, boardWriteDto.getImageFile().getBytes());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            post.setGroup_image_url(imageFileName);
+            post.setGroupImageUrl(imageFileName);
         }
 
         return boardRepository.save(post);
