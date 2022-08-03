@@ -1,6 +1,6 @@
 package com.songpyeon.groupin.web.dto.auth;
 
-import com.songpyeon.groupin.user.User;
+import com.songpyeon.groupin.entity.User;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
