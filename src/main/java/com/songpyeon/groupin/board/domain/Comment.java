@@ -1,7 +1,6 @@
 package com.songpyeon.groupin.board.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.songpyeon.groupin.user.User;
+import com.songpyeon.groupin.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

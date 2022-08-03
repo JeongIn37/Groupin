@@ -2,8 +2,8 @@ package com.songpyeon.groupin.group.dto;
 
 import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.domain.Comment;
+import com.songpyeon.groupin.entity.User;
 import com.songpyeon.groupin.group.domain.GroupProposal;
-import com.songpyeon.groupin.user.User;
 import lombok.Data;
 
 @Data

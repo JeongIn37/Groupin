@@ -5,13 +5,13 @@ import com.songpyeon.groupin.board.domain.Comment;
 import com.songpyeon.groupin.board.repository.BoardRepository;
 import com.songpyeon.groupin.board.repository.CommentRepository;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.entity.User;
 import com.songpyeon.groupin.group.domain.GroupProposal;
 import com.songpyeon.groupin.group.dto.GroupProposalDto;
 import com.songpyeon.groupin.group.repository.GroupProposalRepository;
 import com.songpyeon.groupin.handler.ex.CustomException;
 import com.songpyeon.groupin.handler.ex.ErrorCode;
-import com.songpyeon.groupin.user.User;
-import com.songpyeon.groupin.user.UserRepository;
+import com.songpyeon.groupin.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +45,6 @@ public class GroupProposalService {
 
     public void cancelApply(int boardId, int proposalId, PrincipalDetails principalDetails){
         GroupProposal groupProposal = groupProposalRepository.findByBoardIdAndId(boardId, proposalId);
-        //Comment comment = commentRepository.findByBoardIdAndId(boardId, id);
         if (groupProposal == null){
             throw new CustomException(ErrorCode.NO_APPLY_FOUND);
         }

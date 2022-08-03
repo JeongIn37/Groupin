@@ -1,7 +1,7 @@
 package com.songpyeon.groupin.group.domain;
 
 import com.songpyeon.groupin.board.domain.Board;
-import com.songpyeon.groupin.user.User;
+import com.songpyeon.groupin.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

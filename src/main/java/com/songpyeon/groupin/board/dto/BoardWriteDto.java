@@ -1,9 +1,7 @@
 package com.songpyeon.groupin.board.dto;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.songpyeon.groupin.board.domain.Board;
-import com.songpyeon.groupin.user.User;
+import com.songpyeon.groupin.entity.User;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
