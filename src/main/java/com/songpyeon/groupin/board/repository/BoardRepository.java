@@ -20,6 +20,16 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {  //<오
     @Query("update Board p set p.views = p.views + 1 where p.id = :id")
     int updateViewCount(int id);
 
+    @Transactional
+    @Modifying
+    @Query("update Board p set p.comments = p.comments + 1 where p.id = :id")
+    int updateCommentCount(int id);
+
+    @Transactional
+    @Modifying  // 수정 반영용
+    @Query("update Board p set p.comments = p.comments - 1 where p.id = :id")
+    int deleteCommentCount(int id);
+
     // 페이징 + 정렬
     Page<Board> findAllByCategory(String category, Pageable pageable);
 }

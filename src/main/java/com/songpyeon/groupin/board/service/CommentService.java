@@ -42,6 +42,8 @@ public class CommentService {
         comment.setCategory(category);
         comment.setBoard(board);
 
+        boardRepository.updateCommentCount(boardId);
+
         return commentRepository.save(comment);
 
     }
@@ -61,6 +63,7 @@ public class CommentService {
         }
 
         if (principalDetails.getUser().getUser_id() == comment.getUser().getUser_id()) {
+            boardRepository.deleteCommentCount(boardId);
             commentRepository.delete(comment);
         } else {
             throw new CustomException(ErrorCode.NO_AUTHORITY);
