@@ -30,7 +30,7 @@ public class GroupProposalController {
         return new ResponseEntity<>(new CMRespDto<>(1, "그룹 신청 완료", group), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{boardId}/{proposalId}/delete")
+    @DeleteMapping("/{boardId}/{proposalId}/cancel")
     public ResponseEntity<?> cancelApply(@PathVariable int boardId, @PathVariable int proposalId,  @AuthenticationPrincipal PrincipalDetails principalDetails){
         groupProposalService.cancelApply(boardId, proposalId, principalDetails);
         Map<String, String> map = new HashMap<>();
