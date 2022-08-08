@@ -25,7 +25,7 @@ public class GroupProposalController {
 
     @PostMapping("/{boardId}/apply")
     public ResponseEntity<?> apply(GroupProposalDto groupProposalDto, @PathVariable int boardId, @AuthenticationPrincipal PrincipalDetails principalDetails){
-        GroupProposal group = groupProposalService.apply(groupProposalDto.getComment(), boardId, principalDetails.getUser().getUser_id());
+        GroupProposal group = groupProposalService.apply(groupProposalDto.getComment(), boardId, principalDetails.getUser().getUserId());
         //Comment comment = commentService.writeComment(commentDto.getContent(), category, boardId, principalDetails.getUser().getUser_id());
         return new ResponseEntity<>(new CMRespDto<>(1, "그룹 신청 완료", group), HttpStatus.CREATED);
     }
