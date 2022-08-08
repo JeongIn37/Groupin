@@ -1,7 +1,5 @@
 package com.songpyeon.groupin.group.controller;
 
-import com.songpyeon.groupin.board.domain.Comment;
-import com.songpyeon.groupin.board.dto.CommentDto;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.group.domain.GroupProposal;
 import com.songpyeon.groupin.group.dto.GroupProposalDto;
@@ -25,7 +23,7 @@ public class GroupProposalController {
 
     @PostMapping("/{boardId}/apply")
     public ResponseEntity<?> apply(GroupProposalDto groupProposalDto, @PathVariable int boardId, @AuthenticationPrincipal PrincipalDetails principalDetails){
-        GroupProposal group = groupProposalService.apply(groupProposalDto.getComment(), boardId, principalDetails.getUser().getUserId());
+        GroupProposal group = groupProposalService.apply(groupProposalDto.getComment(), boardId, principalDetails.getUser().getUser_id());
         //Comment comment = commentService.writeComment(commentDto.getContent(), category, boardId, principalDetails.getUser().getUser_id());
         return new ResponseEntity<>(new CMRespDto<>(1, "그룹 신청 완료", group), HttpStatus.CREATED);
     }

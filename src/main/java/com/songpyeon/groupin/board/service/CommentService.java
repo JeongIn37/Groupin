@@ -62,7 +62,7 @@ public class CommentService {
             throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
         }
 
-        if (principalDetails.getUser().getUserId() == comment.getUser().getUserId()) {
+        if (principalDetails.getUser().getUser_id() == comment.getUser().getUser_id()) {
             boardRepository.deleteCommentCount(boardId);
             commentRepository.delete(comment);
         } else {

@@ -94,7 +94,7 @@ public class BoardService {
             throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
         }
 
-        if (principalDetails.getUser().getUserId() == boardEntity.getUser().getUserId()) {
+        if (principalDetails.getUser().getUser_id() == boardEntity.getUser().getUser_id()) {
             return boardEntity;
         } else {
             throw new CustomException(ErrorCode.NO_AUTHORITY);
@@ -148,7 +148,7 @@ public class BoardService {
             throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
         }
 
-        if (principalDetails.getUser().getUserId() == post.getUser().getUserId()) {
+        if (principalDetails.getUser().getUser_id() == post.getUser().getUser_id()) {
             boardRepository.delete(post);
         } else {
             throw new CustomException(ErrorCode.NO_AUTHORITY);

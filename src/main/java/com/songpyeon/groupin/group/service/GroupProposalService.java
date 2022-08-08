@@ -49,7 +49,7 @@ public class GroupProposalService {
             throw new CustomException(ErrorCode.NO_APPLY_FOUND);
         }
 
-        if (principalDetails.getUser().getUserId() == groupProposal.getUser().getUserId()) {
+        if (principalDetails.getUser().getUser_id() == groupProposal.getUser().getUser_id()) {
             groupProposalRepository.delete(groupProposal);
         } else {
             throw new CustomException(ErrorCode.NO_AUTHORITY);
