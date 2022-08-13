@@ -1,6 +1,7 @@
 package com.songpyeon.groupin.board.repository;
 
 import com.songpyeon.groupin.board.domain.Board;
+import com.songpyeon.groupin.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -32,4 +33,9 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {  //<오
 
     // 페이징 + 정렬
     Page<Board> findAllByCategory(String category, Pageable pageable);
+
+    // 마이페이지
+    List<Board> findByUser(User user);
+
+    List<Board> findAllByTitleContaining(String search);
 }

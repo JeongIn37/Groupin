@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,9 +43,12 @@ public class BoardController {
     }
 
     @PostMapping("/{category}/write")
-    public ResponseEntity<Object> writePost(@PathVariable String category, BoardWriteDto boardWriteDto, @AuthenticationPrincipal PrincipalDetails principalDetails){
+    public ResponseEntity<Object> writePost(@PathVariable String category,
+                                            @RequestPart MultipartFile imageFile,
+                                            @RequestPart BoardWriteDto request,
+                                            @AuthenticationPrincipal PrincipalDetails principalDetails){
         // 서비스 호출
-        Board boardEntity = boardService.savePost(category, boardWriteDto, principalDetails);
+        Board boardEntity = boardService.savePost(category, imageFile, request, principalDetails);
         return new ResponseEntity<>(boardEntity, HttpStatus.CREATED);
     }
 
@@ -55,8 +59,10 @@ public class BoardController {
     }
 
     @PatchMapping("/{category}/{boardId}/edit")
-    public ResponseEntity<Object> editPost(@PathVariable String category, @PathVariable int boardId, Board board, BoardWriteDto boardWriteDto){
-        Board boardEntity = boardService.editPost(category, boardId, board, boardWriteDto);
+    public ResponseEntity<Object> editPost(@PathVariable String category,
+                                           @RequestPart MultipartFile imageFile,
+                                           @PathVariable int boardId, @RequestPart Board request){
+        Board boardEntity = boardService.editPost(category, imageFile, boardId, request);
         return new ResponseEntity<>(boardEntity, HttpStatus.OK);
     }
 
@@ -68,5 +74,13 @@ public class BoardController {
         map.put("result", "삭제 완료");
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Board>> search(@RequestParam String query){
+        List<Board> posts = boardService.search(query);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
+    }
+
+
 
 }
