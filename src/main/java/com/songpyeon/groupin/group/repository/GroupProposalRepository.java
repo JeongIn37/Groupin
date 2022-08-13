@@ -14,5 +14,6 @@ public interface GroupProposalRepository extends JpaRepository<GroupProposal, In
 
     List<GroupProposal> findByUser(User user);
 
+    List<GroupProposal> findByBoardId(int boardId);
 
 }

@@ -32,7 +32,7 @@ public class CommentController {
 
 
     @PostMapping("/{category}/{boardId}/writeComment")
-    public ResponseEntity<?> saveComment(CommentDto commentDto, @PathVariable String category, @PathVariable int boardId, @AuthenticationPrincipal PrincipalDetails principalDetails){
+    public ResponseEntity<?> saveComment(@RequestBody CommentDto commentDto, @PathVariable String category, @PathVariable int boardId, @AuthenticationPrincipal PrincipalDetails principalDetails){
         Comment comment = commentService.writeComment(commentDto.getContent(), category, boardId, principalDetails.getUser().getUser_id());
         return new ResponseEntity<>(new CMRespDto<>(1, "댓글 등록 성공", comment), HttpStatus.CREATED);
     }
