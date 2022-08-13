@@ -5,7 +5,6 @@ import com.songpyeon.groupin.group.domain.GroupRelation;
 import com.songpyeon.groupin.group.domain.Groupin;
 import com.songpyeon.groupin.group.domain.GroupProposal;
 import com.songpyeon.groupin.group.dto.GroupDto;
-import com.songpyeon.groupin.group.dto.GroupRelationDto;
 import com.songpyeon.groupin.group.repository.GroupProposalRepository;
 import com.songpyeon.groupin.group.repository.GroupRelationRepository;
 import com.songpyeon.groupin.group.repository.GroupRepository;
@@ -37,39 +36,41 @@ public class GroupService {
 
     }
 
-    public GroupRelation groupingRelation(GroupRelationDto groupRelationDto){
 
-        //groupRelationDto.setGroupMember();
-        //return  groupRelationRepository.save();
+    // Relation 생성
+    public GroupRelation groupingRelation(int boardId, Groupin groupin, PrincipalDetails principalDetails){
+
+        // status가 승인 완료인 user 정보 가져오기
+        List<GroupProposal> applyList = groupProposalRepository.findAllByBoardIdAndStatus(boardId, "승인 완료");
+
+        // 그룹 리더도 relation을 갖기 위해
+        GroupRelation groupleader = new GroupRelation();
+        groupleader.setGroupMember(principalDetails.getUser());
+        groupleader.setGroupin(groupin);
+
+        // 각 User 정보를 Group 정보랑 같이 테이블에 저장하기
+        for (GroupProposal groupProposal : applyList){
+            GroupRelation groupRelation = new GroupRelation();
+            groupRelation.setGroupMember(groupProposal.getUser());
+            groupRelation.setGroupin(groupin);
+            groupRelationRepository.save(groupRelation);
+        }
+
         return null;
 
     }
 
-//    Board board = boardRepository.findById(boardId).orElseThrow(() -> {
-//        throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
-//    });
-//    User user = userRepository.findById(userId).orElseThrow(() -> {
-//        throw new CustomException(ErrorCode.USER_NOT_FOUND);
-//    });
-//
-//    Comment comment = new Comment();
-//        comment.setContent(content);
-//        comment.setUser(user);
-//        comment.setCategory(category);
-//        comment.setBoard(board);
-//
-//        boardRepository.updateCommentCount(boardId);
-//
-//        return commentRepository.save(comment);
 
+    // 모임별 참가자 리스트
+    public List<GroupRelation> checkMembers(int groupId) {
+        List<GroupRelation> lst = groupRelationRepository.findAllByGroupin_Id(groupId);
+        return lst;
+    }
 
-    // DB에 저장하기
-    // BoardWriteDto에 있는 정보를 Board로 넘겨서 저장하는 과정이 필요
-//    // Dto에서 toEntity 함수 만들어서 가능
-//        boardWriteDto.setCategory(category);    // pathvariable로 받아온 category 정보를 Dto에 set
-//        boardWriteDto.setUser(principalDetails.getUser());
-//    Board board = boardWriteDto.toEntity(imageFileName);
-//        return boardRepository.save(board);
-
+    // 유저별 모임 리스트
+    public List<GroupRelation> checkGroups(PrincipalDetails principalDetails) {
+        List<GroupRelation> lst = groupRelationRepository.findAllByGroupMember(principalDetails.getUser());
+        return lst;
+    }
 
 }

@@ -36,5 +36,26 @@ public class GroupProposalController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
+    // 신청 승인
+    @PatchMapping("/admitApply/{proposalId}")
+    public ResponseEntity<Object> admitApply(@PathVariable int proposalId){
+        GroupProposal applyEntity = groupProposalService.admitApply(proposalId);
+        return new ResponseEntity<>(applyEntity, HttpStatus.OK);
+    }
+
+    // 신청 거절
+    @PatchMapping("/rejectApply/{proposalId}")
+    public ResponseEntity<Object> rejectApply(@PathVariable int proposalId){
+        GroupProposal applyEntity = groupProposalService.rejectApply(proposalId);
+        return new ResponseEntity<>(applyEntity, HttpStatus.OK);
+    }
+
+    // 신청 보류
+    @PatchMapping("/waitingStatus/{proposalId}")
+    public ResponseEntity<Object> waitingStatus(@PathVariable int proposalId){
+        GroupProposal applyEntity = groupProposalService.waiting(proposalId);
+        return new ResponseEntity<>(applyEntity, HttpStatus.OK);
+    }
+
 
 }
