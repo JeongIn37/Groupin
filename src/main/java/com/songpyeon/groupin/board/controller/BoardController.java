@@ -59,8 +59,10 @@ public class BoardController {
     }
 
     @PatchMapping("/{category}/{boardId}/edit")
-    public ResponseEntity<Object> editPost(@PathVariable String category, @RequestPart MultipartFile imageFile, @PathVariable int boardId, Board board, @RequestBody BoardWriteDto boardWriteDto){
-        Board boardEntity = boardService.editPost(category, imageFile, boardId, board);
+    public ResponseEntity<Object> editPost(@PathVariable String category,
+                                           @RequestPart MultipartFile imageFile,
+                                           @PathVariable int boardId, @RequestPart Board request){
+        Board boardEntity = boardService.editPost(category, imageFile, boardId, request);
         return new ResponseEntity<>(boardEntity, HttpStatus.OK);
     }
 

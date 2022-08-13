@@ -50,18 +50,11 @@ public class BoardService {
 
     // 글 작성하기
     public Board savePost(String category, MultipartFile imageFile, BoardWriteDto boardWriteDto, PrincipalDetails principalDetails){
-        System.out.println("에러 위치 찾기 0");
 
         UUID uuid = UUID.randomUUID();  //UUID: 파일명과 별개로 고유한 아이디를 만들기 위해 사용하는 규약
-        System.out.println("에러 위치 찾기 11");
-
         String imageFileName = uuid+"_"+imageFile.getOriginalFilename(); // 업로드하려는 실제 파일명이 들어가는 부분
         //String imageFileName = uuid+"_"+boardWriteDto.getImageFile().getOriginalFilename(); // 업로드하려는 실제 파일명이 들어가는 부분
-        System.out.println("에러 위치 찾기 22");
-
         Path imageFilePath = Paths.get(uploadFolder+imageFileName);
-
-        System.out.println("에러 위치 찾기 33");
 
         if (imageFile.isEmpty()){
             System.out.println("사진이 업로드 되지 않았습니다.");
@@ -134,9 +127,10 @@ public class BoardService {
         // 이미지 처리
         UUID uuid = UUID.randomUUID();
         String imageFileName = uuid+"_"+imageFile.getOriginalFilename(); // 업로드하려는 실제 파일명이 들어가는 부분
+
         Path imageFilePath = Paths.get(uploadFolder+imageFileName);
 
-        if (imageFileName.isEmpty()){
+        if (imageFile.isEmpty()){
             System.out.println("사진이 업로드 되지 않았습니다.");
             post.setGroupImageUrl(null);
         } else {
@@ -147,9 +141,7 @@ public class BoardService {
             }
             post.setGroupImageUrl(imageFileName);
         }
-
         return boardRepository.save(post);
-
     }
 
     // 글 삭제하기
