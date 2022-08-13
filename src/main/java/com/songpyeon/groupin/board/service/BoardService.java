@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -153,6 +154,11 @@ public class BoardService {
         } else {
             throw new CustomException(ErrorCode.NO_AUTHORITY);
         }
+    }
+
+    public List<Board> search(String query){
+        List<Board> posts = boardRepository.findAllByTitleContaining(query);
+        return posts;
     }
 
 }
