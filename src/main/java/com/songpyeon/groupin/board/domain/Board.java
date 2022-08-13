@@ -24,12 +24,10 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략이 DB를 따라감 (mysql-AutoIncrement, oracle-sequence )
     private int id;
 
-    @NotNull
     private String category;
 
     @JoinColumn(name="user_id")
     @ManyToOne
-    @NotNull
     private User user;    // user와 board는 1:N
 
     private boolean notice;
