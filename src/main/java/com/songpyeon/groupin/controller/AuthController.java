@@ -1,24 +1,26 @@
 package com.songpyeon.groupin.controller;
 
+import com.songpyeon.groupin.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.entity.User;
 import com.songpyeon.groupin.handler.ex.CustomValidationException;
 import com.songpyeon.groupin.service.AuthService;
-import com.songpyeon.groupin.entity.User;
 import com.songpyeon.groupin.web.dto.auth.SignupDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
 @RequiredArgsConstructor
-@Controller
+@RestController
 public class AuthController {
     private static final Logger log = LoggerFactory.getLogger(AuthController.class);
 
@@ -54,5 +56,18 @@ public class AuthController {
             System.out.println(userEntity);
             return "/auth/signin";
         }
+    }
+
+    @GetMapping("/auth/update")
+    public ResponseEntity<User> updatePage(@AuthenticationPrincipal PrincipalDetails principalDetails){
+        User userEntity = authService.updatePage(principalDetails);
+        return new ResponseEntity<>(userEntity, HttpStatus.OK);
+    }
+
+    
+    @PatchMapping("/auth/update")
+    public ResponseEntity<User> userUpdate(User user){
+        User userUpdate = authService.userUpdate(user);
+        return new ResponseEntity<>(userUpdate, HttpStatus.OK);
     }
 }
