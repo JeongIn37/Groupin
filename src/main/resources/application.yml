@@ -32,7 +32,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # Could not fetch the SequenceInformation from the database 에러 해결
     open-in-view: true
     hibernate:
-      ddl-auto: create # update: 데이터 INSERT 후 서버 재실행해도 남아있음 / create: 서버 재실행시 INSERT된 데이터 사라짐 / none: 배포 후 사용
+      ddl-auto: update # update: 데이터 INSERT 후 서버 재실행해도 남아있음 / create: 서버 재실행시 INSERT된 데이터 사라짐 / none: 배포 후 사용
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
