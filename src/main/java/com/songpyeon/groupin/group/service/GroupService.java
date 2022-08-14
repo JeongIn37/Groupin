@@ -1,6 +1,6 @@
 package com.songpyeon.groupin.group.service;
 
-import com.songpyeon.groupin.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.group.domain.GroupRelation;
 import com.songpyeon.groupin.group.domain.Groupin;
 import com.songpyeon.groupin.group.domain.GroupProposal;
@@ -8,7 +8,6 @@ import com.songpyeon.groupin.group.dto.GroupDto;
 import com.songpyeon.groupin.group.repository.GroupProposalRepository;
 import com.songpyeon.groupin.group.repository.GroupRelationRepository;
 import com.songpyeon.groupin.group.repository.GroupRepository;
-import com.songpyeon.groupin.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

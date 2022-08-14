@@ -1,8 +1,8 @@
 package com.songpyeon.groupin.board.repository;
 
+import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.domain.Comment;
-import com.songpyeon.groupin.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

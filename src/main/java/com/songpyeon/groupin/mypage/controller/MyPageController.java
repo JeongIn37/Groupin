@@ -1,13 +1,11 @@
 package com.songpyeon.groupin.mypage.controller;
 
+import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.domain.Comment;
-import com.songpyeon.groupin.board.service.BoardService;
-import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.group.domain.GroupProposal;
 import com.songpyeon.groupin.mypage.service.MyPageService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

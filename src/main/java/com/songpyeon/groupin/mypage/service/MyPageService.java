@@ -1,11 +1,11 @@
 package com.songpyeon.groupin.mypage.service;
 
+import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.domain.Comment;
 import com.songpyeon.groupin.board.repository.BoardRepository;
 import com.songpyeon.groupin.board.repository.CommentRepository;
-import com.songpyeon.groupin.config.auth.PrincipalDetails;
-import com.songpyeon.groupin.entity.User;
 import com.songpyeon.groupin.group.domain.GroupProposal;
 import com.songpyeon.groupin.group.repository.GroupProposalRepository;
 import lombok.RequiredArgsConstructor;
