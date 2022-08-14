@@ -129,7 +129,6 @@
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                    <release>11</release>
                     <showWarnings>true</showWarnings>
                     <compilerArgs>
                         <arg>-XDcompilePolicy=simple</arg>
