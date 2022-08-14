@@ -4,16 +4,14 @@ import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.domain.Comment;
 import com.songpyeon.groupin.board.repository.BoardRepository;
 import com.songpyeon.groupin.board.repository.CommentRepository;
-import com.songpyeon.groupin.config.auth.PrincipalDetails;
-import com.songpyeon.groupin.entity.User;
-import com.songpyeon.groupin.handler.ex.CustomException;
-import com.songpyeon.groupin.handler.ex.ErrorCode;
-import com.songpyeon.groupin.repository.UserRepository;
+import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.User.entity.User;
+import com.songpyeon.groupin.User.handler.ex.CustomException;
+import com.songpyeon.groupin.User.handler.ex.ErrorCode;
+import com.songpyeon.groupin.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 
 import java.util.List;

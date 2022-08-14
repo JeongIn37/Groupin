@@ -1,6 +1,6 @@
-package com.songpyeon.groupin.repository;
+package com.songpyeon.groupin.User.repository;
 
-import com.songpyeon.groupin.entity.User;
+import com.songpyeon.groupin.User.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

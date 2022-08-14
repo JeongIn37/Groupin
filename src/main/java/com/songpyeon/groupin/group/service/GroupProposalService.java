@@ -2,17 +2,15 @@ package com.songpyeon.groupin.group.service;
 
 import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.repository.BoardRepository;
-import com.songpyeon.groupin.config.auth.PrincipalDetails;
-import com.songpyeon.groupin.entity.User;
+import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.group.domain.GroupProposal;
 import com.songpyeon.groupin.group.repository.GroupProposalRepository;
-import com.songpyeon.groupin.handler.ex.CustomException;
-import com.songpyeon.groupin.handler.ex.ErrorCode;
-import com.songpyeon.groupin.repository.UserRepository;
+import com.songpyeon.groupin.User.handler.ex.CustomException;
+import com.songpyeon.groupin.User.handler.ex.ErrorCode;
+import com.songpyeon.groupin.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -55,22 +53,7 @@ public class GroupProposalService {
         }
     }
 
-    public GroupProposal admitApply(int proposalId){
-        GroupProposal applyUser = groupProposalRepository.findById(proposalId);
-        applyUser.setStatus("승인 완료");
-        return groupProposalRepository.save(applyUser);
-    }
+    public void applyList(){
 
-    public GroupProposal waiting(int proposalId){
-        GroupProposal gp = groupProposalRepository.findById(proposalId);
-        gp.setStatus("승인 대기 중");
-        return groupProposalRepository.save(gp);
     }
-
-    public GroupProposal rejectApply(int proposalId){
-        GroupProposal gp = groupProposalRepository.findById(proposalId);
-        gp.setStatus("승인 거절");
-        return groupProposalRepository.save(gp);
-    }
-
 }

@@ -1,4 +1,4 @@
-package com.songpyeon.groupin.entity;
+package com.songpyeon.groupin.User.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

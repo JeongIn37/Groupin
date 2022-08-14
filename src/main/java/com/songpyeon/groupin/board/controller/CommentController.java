@@ -1,17 +1,14 @@
 package com.songpyeon.groupin.board.controller;
 
-import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.domain.Comment;
-import com.songpyeon.groupin.board.dto.BoardWriteDto;
 import com.songpyeon.groupin.board.dto.CommentDto;
 import com.songpyeon.groupin.board.service.CommentService;
-import com.songpyeon.groupin.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.web.dto.CMRespDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;

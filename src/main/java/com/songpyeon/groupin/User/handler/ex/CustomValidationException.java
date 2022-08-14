@@ -1,4 +1,4 @@
-package com.songpyeon.groupin.handler.ex;
+package com.songpyeon.groupin.User.handler.ex;
 
 import java.util.Map;
 

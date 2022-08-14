@@ -1,6 +1,6 @@
-package com.songpyeon.groupin.config.auth;
-import com.songpyeon.groupin.entity.User;
-import com.songpyeon.groupin.repository.UserRepository;
+package com.songpyeon.groupin.User.config.auth;
+import com.songpyeon.groupin.User.entity.User;
+import com.songpyeon.groupin.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
