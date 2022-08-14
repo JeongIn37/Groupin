@@ -15,14 +15,11 @@
     <description>Groupin</description>
     <properties>
         <java.version>11</java.version>
-<!--        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        -->
+
         <!-- jar 배포용 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!--<maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>-->
+
         <!--main 함수가 있는 class 경로-->
         <start-class>com.songpyeon.groupin.GroupinApplication</start-class>
     </properties>
