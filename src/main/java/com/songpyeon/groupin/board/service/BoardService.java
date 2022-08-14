@@ -163,4 +163,9 @@ public class BoardService {
         return posts;
     }
 
+    public List<Board> best(){
+        List<Board> posts = boardRepository.findTop2ByOrderByViewsDescCommentsDesc();
+        return posts;
+    }
+
 }
