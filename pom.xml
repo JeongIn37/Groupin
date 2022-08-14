@@ -25,6 +25,14 @@
         <!--main 함수가 있는 class 경로-->
         <start-class>com.songpyeon.groupin.GroupinApplication</start-class>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>groupin-releases</id>
+            <name>releases</name>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
