@@ -132,7 +132,6 @@
                     <target>${java.version}</target>
                     <compilerVersion>${java.version}</compilerVersion>
                     <encoding>UTF-8</encoding>
-                    <release>11</release>  <!--or <release>10</release>-->
                 </configuration>
             </plugin>
         </plugins>
