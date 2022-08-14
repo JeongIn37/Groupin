@@ -1,14 +1,13 @@
 package com.songpyeon.groupin.group.domain;
 
 import com.songpyeon.groupin.board.domain.Board;
-import com.songpyeon.groupin.entity.User;
+import com.songpyeon.groupin.User.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Builder // Board <- BoardWriteDto 넣기 위해 사용

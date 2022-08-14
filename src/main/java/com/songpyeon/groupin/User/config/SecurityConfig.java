@@ -1,4 +1,4 @@
-package com.songpyeon.groupin.config;
+package com.songpyeon.groupin.User.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

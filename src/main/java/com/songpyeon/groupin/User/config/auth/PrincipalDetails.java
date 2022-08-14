@@ -1,6 +1,6 @@
-package com.songpyeon.groupin.config.auth;
+package com.songpyeon.groupin.User.config.auth;
 
-import com.songpyeon.groupin.entity.User;
+import com.songpyeon.groupin.User.entity.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

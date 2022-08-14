@@ -1,7 +1,7 @@
-package com.songpyeon.groupin.handler;
+package com.songpyeon.groupin.User.handler;
 
-import com.songpyeon.groupin.handler.ex.CustomException;
-import com.songpyeon.groupin.handler.ex.CustomValidationException;
+import com.songpyeon.groupin.User.handler.ex.CustomException;
+import com.songpyeon.groupin.User.handler.ex.CustomValidationException;
 import com.songpyeon.groupin.util.Script;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 

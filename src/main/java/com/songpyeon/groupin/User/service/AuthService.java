@@ -1,8 +1,8 @@
-package com.songpyeon.groupin.service;
+package com.songpyeon.groupin.User.service;
 
-import com.songpyeon.groupin.config.auth.PrincipalDetails;
-import com.songpyeon.groupin.entity.User;
-import com.songpyeon.groupin.repository.UserRepository;
+import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.User.entity.User;
+import com.songpyeon.groupin.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

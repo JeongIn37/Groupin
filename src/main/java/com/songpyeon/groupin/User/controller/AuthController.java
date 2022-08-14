@@ -1,9 +1,9 @@
-package com.songpyeon.groupin.controller;
+package com.songpyeon.groupin.User.controller;
 
-import com.songpyeon.groupin.config.auth.PrincipalDetails;
-import com.songpyeon.groupin.entity.User;
-import com.songpyeon.groupin.handler.ex.CustomValidationException;
-import com.songpyeon.groupin.service.AuthService;
+import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.User.entity.User;
+import com.songpyeon.groupin.User.handler.ex.CustomValidationException;
+import com.songpyeon.groupin.User.service.AuthService;
 import com.songpyeon.groupin.web.dto.auth.SignupDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

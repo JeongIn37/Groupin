@@ -1,6 +1,6 @@
 package com.songpyeon.groupin.review.dto;
 
-import com.songpyeon.groupin.entity.User;
+import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.review.domain.Review;
 import lombok.Data;
 

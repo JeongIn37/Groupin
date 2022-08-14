@@ -3,10 +3,10 @@ package com.songpyeon.groupin.review.service;
 
 import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.review.repository.RCommentRepository;
-import com.songpyeon.groupin.entity.User;
+import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.User.handler.ex.CustomException;
 import com.songpyeon.groupin.User.handler.ex.ErrorCode;
-import com.songpyeon.groupin.repository.UserRepository;
+import com.songpyeon.groupin.User.repository.UserRepository;
 import com.songpyeon.groupin.review.domain.RComment;
 import com.songpyeon.groupin.review.domain.Review;
 import com.songpyeon.groupin.review.repository.ReviewRepository;

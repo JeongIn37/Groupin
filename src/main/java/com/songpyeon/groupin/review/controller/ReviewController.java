@@ -1,6 +1,6 @@
 package com.songpyeon.groupin.review.controller;
 
-import com.songpyeon.groupin.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.review.domain.Review;
 import com.songpyeon.groupin.review.dto.ReviewWriteDto;
 import com.songpyeon.groupin.review.service.ReviewService;

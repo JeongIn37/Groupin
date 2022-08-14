@@ -1,8 +1,6 @@
 package com.songpyeon.groupin.group.controller;
 
-import com.songpyeon.groupin.board.domain.Comment;
-import com.songpyeon.groupin.board.dto.CommentDto;
-import com.songpyeon.groupin.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.group.domain.GroupProposal;
 import com.songpyeon.groupin.group.dto.GroupProposalDto;
 import com.songpyeon.groupin.group.service.GroupProposalService;
@@ -14,7 +12,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
