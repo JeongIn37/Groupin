@@ -6,6 +6,7 @@ import com.songpyeon.groupin.board.repository.BoardRepository;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.handler.ex.CustomException;
 import com.songpyeon.groupin.handler.ex.ErrorCode;
+import com.songpyeon.groupin.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,8 @@ import java.util.UUID;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+    private final UserRepository userRepository;
+
     @Value("${file.path}")  //application.yml 파일의 file - path의 값 가져오기
     private String uploadFolder;
 
@@ -75,6 +78,8 @@ public class BoardService {
         Board post = boardWriteDto.toEntity(imageFileName);
         post.setUser(principalDetails.getUser());
         post.setCategory(category);
+
+        userRepository.writingPostsPoint(principalDetails.getUser().getUser_id());
 
         return boardRepository.save(post);
     }
