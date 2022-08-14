@@ -81,6 +81,11 @@ public class BoardController {
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
-
+    // 메인 페이지 베스트 모임 (2가지)
+    @GetMapping("/bestPosts")
+    public ResponseEntity<List<Board>> best(){
+        List<Board> posts = boardService.best();
+        return new ResponseEntity<>(posts, HttpStatus.OK);
+    }
 
 }

@@ -38,4 +38,6 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {  //<오
     List<Board> findByUser(User user);
 
     List<Board> findAllByTitleContaining(String search);
+
+    List<Board> findTop2ByOrderByViewsDescCommentsDesc();
 }
