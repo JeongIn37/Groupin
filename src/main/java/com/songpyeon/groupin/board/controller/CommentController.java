@@ -27,14 +27,14 @@ public class CommentController {
     @GetMapping("/{category}/{boardId}/comments")
     public ResponseEntity<?> commentList(@PathVariable String category, @PathVariable int boardId){
         List<Comment> comment = commentService.commentList(category, boardId);
-        return new ResponseEntity<>(new CMRespDto<>(1, "댓글 보기", comment), HttpStatus.OK);
+        return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 
 
     @PostMapping("/{category}/{boardId}/writeComment")
     public ResponseEntity<?> saveComment(@RequestBody CommentDto commentDto, @PathVariable String category, @PathVariable int boardId, @AuthenticationPrincipal PrincipalDetails principalDetails){
         Comment comment = commentService.writeComment(commentDto.getContent(), category, boardId, principalDetails.getUser().getUser_id());
-        return new ResponseEntity<>(new CMRespDto<>(1, "댓글 등록 성공", comment), HttpStatus.CREATED);
+        return new ResponseEntity<>(comment, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{category}/{boardId}/{gCommentId}/delete")

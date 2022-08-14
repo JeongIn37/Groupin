@@ -25,7 +25,8 @@ public class GroupProposalController {
     public ResponseEntity<?> apply(@RequestBody GroupProposalDto groupProposalDto, @PathVariable int boardId, @AuthenticationPrincipal PrincipalDetails principalDetails){
         GroupProposal group = groupProposalService.apply(groupProposalDto.getComment(), boardId, principalDetails.getUser().getUser_id());
         //Comment comment = commentService.writeComment(commentDto.getContent(), category, boardId, principalDetails.getUser().getUser_id());
-        return new ResponseEntity<>(new CMRespDto<>(1, "그룹 신청 완료", group), HttpStatus.CREATED);
+        //return new ResponseEntity<>(new CMRespDto<>(1, "그룹 신청 완료", group), HttpStatus.CREATED);
+        return new ResponseEntity<>(group, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{boardId}/{proposalId}/cancel")

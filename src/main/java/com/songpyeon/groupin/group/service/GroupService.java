@@ -8,6 +8,7 @@ import com.songpyeon.groupin.group.dto.GroupDto;
 import com.songpyeon.groupin.group.repository.GroupProposalRepository;
 import com.songpyeon.groupin.group.repository.GroupRelationRepository;
 import com.songpyeon.groupin.group.repository.GroupRepository;
+import com.songpyeon.groupin.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +48,7 @@ public class GroupService {
         GroupRelation groupleader = new GroupRelation();
         groupleader.setGroupMember(principalDetails.getUser());
         groupleader.setGroupin(groupin);
+        groupRepository.groupLeaderPoint(principalDetails.getUser().getUser_id());
 
         // 각 User 정보를 Group 정보랑 같이 테이블에 저장하기
         for (GroupProposal groupProposal : applyList){
@@ -54,6 +56,7 @@ public class GroupService {
             groupRelation.setGroupMember(groupProposal.getUser());
             groupRelation.setGroupin(groupin);
             groupRelationRepository.save(groupRelation);
+            groupRepository.groupMemberPoint(groupProposal.getUser().getUser_id());
         }
 
         return null;
