@@ -130,10 +130,11 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                    <release>${java.version}</release>
                     <compilerVersion>${java.version}</compilerVersion>
                     <encoding>UTF-8</encoding>
-                </configuration></plugin>
+                    <release>11</release>  <!--or <release>10</release>-->
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
