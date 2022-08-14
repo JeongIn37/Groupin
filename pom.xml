@@ -126,14 +126,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <compilerVersion>${java.version}</compilerVersion>
-                    <encoding>UTF-8</encoding>
+                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                    <release>11</release>
+                    <showWarnings>true</showWarnings>
+                    <compilerArgs>
+                        <arg>-XDcompilePolicy=simple</arg>
+                        <arg>-Xplugin:ErrorProne</arg>
+                    </compilerArgs>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>com.google.errorprone</groupId>
+                            <artifactId>error_prone_core</artifactId>
+                            <version>2.3.3</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
