@@ -1,29 +1,20 @@
-package com.songpyeon.groupin.User.repository;
+package com.songpyeon.groupin.group.repository;
 
-import com.songpyeon.groupin.User.entity.User;
+
+import com.songpyeon.groupin.group.domain.Groupin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
-
-    /*
-      - 글 작성 (모임 생성 / 후기) - 10pt
-      - 댓글 - 1pt
-      - 실제 참여 (참여자) - 5pt
-      - 그룹장 - 10pt
-    */
+public interface GroupRepository extends JpaRepository<Groupin, Integer> {
     @Transactional
     @Modifying  // 수정 반영용
     @Query("update User u set u.point = u.point + 10 where u.user_id = :id")
-    int writingPostsPoint(int id);
-
+    int groupLeaderPoint(int id);
 
     @Transactional
     @Modifying  // 수정 반영용
     @Query("update User u set u.point = u.point + 5 where u.user_id = :id")
-    int writingCommentsPoint(int id);
-
-    User findById(String id);
+    int groupMemberPoint(int id);
 }

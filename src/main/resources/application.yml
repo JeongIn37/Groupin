@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
   servlet:
     context-path: /
     encoding:
@@ -16,17 +16,17 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
 
-#  datasource:
-#    driver-class-name: org.mariadb.jdbc.Driver
-#    url: jdbc:mariadb://localhost:3306/groupin?serverTimezone=Asia/Seoul
-#    username: groupin
-#    password: groupin1234
-
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/groupin
-    username: root
-    password: cos1234
+    url: jdbc:mariadb://localhost:3306/groupin?serverTimezone=Asia/Seoul
+    username: groupin
+    password: groupin1234
+
+#  datasource:
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://localhost:3306/groupin
+#    username: root
+#    password: cos1234
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # Could not fetch the SequenceInformation from the database 에러 해결

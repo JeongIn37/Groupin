@@ -15,7 +15,24 @@
     <description>Groupin</description>
     <properties>
         <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <!-- jar 배포용 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <!--main 함수가 있는 class 경로-->
+        <start-class>com.songpyeon.groupin.GroupinApplication</start-class>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>groupin-releases</id>
+            <name>releases</name>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
@@ -113,6 +130,17 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <compilerVersion>${java.version}</compilerVersion>
+                    <encoding>UTF-8</encoding>
+                </configuration></plugin>
         </plugins>
     </build>
 

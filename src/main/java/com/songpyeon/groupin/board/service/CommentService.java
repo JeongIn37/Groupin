@@ -41,6 +41,7 @@ public class CommentService {
         comment.setBoard(board);
 
         boardRepository.updateCommentCount(boardId);
+        userRepository.writingCommentsPoint(userId);
 
         return commentRepository.save(comment);
 
