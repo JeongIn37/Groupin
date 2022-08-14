@@ -16,17 +16,26 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
 
-  datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/groupin?serverTimezone=Asia/Seoul
-    username: groupin
-    password: groupin1234
+#  datasource:
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://localhost:3306/groupin?serverTimezone=Asia/Seoul
+#    username: groupin
+#    password: groupin1234
 
 #  datasource:
 #    driver-class-name: org.mariadb.jdbc.Driver
 #    url: jdbc:mariadb://localhost:3306/groupin
 #    username: root
 #    password: cos1234
+#  datasource:
+#      url: ${DB_URL}
+#      username: ${DB_USER}
+#      password: ${DB_PASSWORD}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://b9a83f5befb954:52f01a8f@us-cdbr-east-06.cleardb.net/heroku_8e405b28ab22d69?reconnect=true
+    username: b9a83f5befb954
+    password: 52f01a8f
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # Could not fetch the SequenceInformation from the database 에러 해결
