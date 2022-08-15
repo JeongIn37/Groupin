@@ -34,7 +34,7 @@ spring:
 #      username: ${DB_USER}
 #      password: ${DB_PASSWORD}
   datasource:
-      url: ${DB_URL}
+      url: ${CLEARDB_DATABASE_URL}
       username: ${DB_USER}
       password: ${DB_PASSWORD}
 >>>>>>> 51016ae ([SETTING] Change database for remote use)
