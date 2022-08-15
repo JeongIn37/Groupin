@@ -2,7 +2,7 @@ package com.songpyeon.groupin.review.controller;
 
 import com.songpyeon.groupin.review.domain.RComment;
 import com.songpyeon.groupin.review.dto.RCommentDto;
-import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.review.service.RCommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
 package com.songpyeon.groupin.review.service;
 
 
-import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.review.repository.RCommentRepository;
 import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.handler.ex.CustomException;

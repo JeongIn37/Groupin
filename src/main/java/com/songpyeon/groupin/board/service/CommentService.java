@@ -4,7 +4,7 @@ import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.domain.Comment;
 import com.songpyeon.groupin.board.repository.BoardRepository;
 import com.songpyeon.groupin.board.repository.CommentRepository;
-import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.handler.ex.CustomException;
 import com.songpyeon.groupin.handler.ex.ErrorCode;

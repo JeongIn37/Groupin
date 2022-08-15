@@ -1,4 +1,4 @@
-package com.songpyeon.groupin.User.config.auth;
+package com.songpyeon.groupin.config.auth;
 import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

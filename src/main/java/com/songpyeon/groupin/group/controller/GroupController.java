@@ -1,6 +1,6 @@
 package com.songpyeon.groupin.group.controller;
 
-import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.group.domain.GroupProposal;
 import com.songpyeon.groupin.group.domain.GroupRelation;
 import com.songpyeon.groupin.group.domain.Groupin;

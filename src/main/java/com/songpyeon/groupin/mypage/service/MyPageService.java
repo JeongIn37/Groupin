@@ -1,6 +1,6 @@
 package com.songpyeon.groupin.mypage.service;
 
-import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.domain.Comment;
@@ -10,7 +10,6 @@ import com.songpyeon.groupin.group.domain.GroupProposal;
 import com.songpyeon.groupin.group.repository.GroupProposalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

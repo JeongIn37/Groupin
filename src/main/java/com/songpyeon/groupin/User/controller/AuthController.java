@@ -1,6 +1,6 @@
 package com.songpyeon.groupin.User.controller;
 
-import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
+import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.handler.ex.CustomValidationException;
 import com.songpyeon.groupin.User.service.AuthService;
