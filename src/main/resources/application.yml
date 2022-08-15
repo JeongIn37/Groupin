@@ -27,10 +27,6 @@ spring:
 #    url: jdbc:mariadb://localhost:3306/groupin
 #    username: root
 #    password: cos1234
-#  datasource:
-#      url: ${DB_URL}
-#      username: ${DB_USER}
-#      password: ${DB_PASSWORD}
   datasource:
       url: ${CLEARDB_DATABASE_URL}
       username: ${DB_USER}
