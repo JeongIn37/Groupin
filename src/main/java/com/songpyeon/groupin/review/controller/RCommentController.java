@@ -4,7 +4,6 @@ import com.songpyeon.groupin.review.domain.RComment;
 import com.songpyeon.groupin.review.dto.RCommentDto;
 import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.review.service.RCommentService;
-import com.songpyeon.groupin.web.dto.CMRespDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

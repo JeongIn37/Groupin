@@ -1,8 +1,8 @@
 package com.songpyeon.groupin.review.service;
 
 import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
-import com.songpyeon.groupin.User.handler.ex.CustomException;
-import com.songpyeon.groupin.User.handler.ex.ErrorCode;
+import com.songpyeon.groupin.handler.ex.CustomException;
+import com.songpyeon.groupin.handler.ex.ErrorCode;
 import com.songpyeon.groupin.review.domain.Review;
 import com.songpyeon.groupin.review.dto.ReviewWriteDto;
 import com.songpyeon.groupin.review.repository.ReviewRepository;

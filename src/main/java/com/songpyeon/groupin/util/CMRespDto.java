@@ -1,4 +1,4 @@
-package com.songpyeon.groupin.web.dto;
+package com.songpyeon.groupin.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

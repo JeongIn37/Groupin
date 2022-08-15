@@ -1,4 +1,4 @@
-package com.songpyeon.groupin.web.dto.auth;
+package com.songpyeon.groupin.User.dto;
 
 import com.songpyeon.groupin.User.entity.User;
 import lombok.Data;

@@ -1,8 +1,8 @@
 package com.songpyeon.groupin.board.service;
 
 import com.songpyeon.groupin.User.config.auth.PrincipalDetails;
-import com.songpyeon.groupin.User.handler.ex.CustomException;
-import com.songpyeon.groupin.User.handler.ex.ErrorCode;
+import com.songpyeon.groupin.handler.ex.CustomException;
+import com.songpyeon.groupin.handler.ex.ErrorCode;
 import com.songpyeon.groupin.User.repository.UserRepository;
 import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.board.dto.BoardWriteDto;

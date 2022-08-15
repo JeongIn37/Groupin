@@ -1,8 +1,8 @@
-package com.songpyeon.groupin.User.handler;
+package com.songpyeon.groupin.handler;
 
-import com.songpyeon.groupin.User.handler.ex.CustomException;
-import com.songpyeon.groupin.User.handler.ex.ErrorCode;
-import com.songpyeon.groupin.User.handler.ex.ErrorResponse;
+import com.songpyeon.groupin.handler.ex.CustomException;
+import com.songpyeon.groupin.handler.ex.ErrorCode;
+import com.songpyeon.groupin.handler.ex.ErrorResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
