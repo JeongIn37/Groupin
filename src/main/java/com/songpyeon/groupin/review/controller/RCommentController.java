@@ -24,13 +24,13 @@ public class RCommentController {
     @GetMapping("/review/{reviewId}/comments")
     public ResponseEntity<?> commentList(@PathVariable int reviewId){
         List<RComment> comment = rCommentService.commentList(reviewId);
-        return new ResponseEntity<>(new CMRespDto<>(1, "댓글 보기", comment), HttpStatus.OK);
+        return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 
     @PostMapping("/review/{reviewId}/writeComment")
-    public ResponseEntity<?> saveComment(RCommentDto rCommentDto, @PathVariable int reviewId, @AuthenticationPrincipal PrincipalDetails principalDetails){
+    public ResponseEntity<?> saveComment(@RequestBody RCommentDto rCommentDto, @PathVariable int reviewId, @AuthenticationPrincipal PrincipalDetails principalDetails){
         RComment comment = rCommentService.writeComment(rCommentDto.getContent(),reviewId, principalDetails.getUser().getUser_id());
-        return new ResponseEntity<>(new CMRespDto<>(1, "댓글 등록 성공", comment), HttpStatus.CREATED);
+        return new ResponseEntity<>(comment, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/review/{reviewId}/{rCommentId}/delete")

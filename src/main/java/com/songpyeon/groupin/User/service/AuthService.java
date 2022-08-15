@@ -30,15 +30,17 @@ public class AuthService {
     }
 
     @Transactional
-    public User userUpdate(User user) {
-        User persistance = userRepository.findById(user.getId());
-        System.out.println(persistance);
-        persistance.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+    public User userUpdate(User user, PrincipalDetails principalDetails) {
+        User persistance = userRepository.findById(principalDetails.getUser().getId());
+
+        String rawPassword = user.getPassword();
+        String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+
+        persistance.setPassword(encPassword);
         persistance.setNickname(user.getNickname());
         persistance.setEmail(user.getEmail());
         persistance.setRegion(user.getRegion());
-        System.out.println(user.getNickname());
-        System.out.println(persistance);
+        System.out.println("persistance: " + persistance);
         return persistance;
     }
 

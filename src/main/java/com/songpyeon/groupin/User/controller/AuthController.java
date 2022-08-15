@@ -37,7 +37,7 @@ public class AuthController {
     }
 
     @PostMapping("/auth/signup")
-    public String signup(@Valid SignupDto signupDto, BindingResult bindingResult) {
+    public ResponseEntity<User> signup(@Valid @RequestBody SignupDto signupDto, BindingResult bindingResult) {
         log.info(signupDto.toString());
 
         if (bindingResult.hasErrors()) {
@@ -54,9 +54,8 @@ public class AuthController {
             log.info(user.toString());
             User userEntity = authService.join(user);
             System.out.println(userEntity);
-            return "/auth/signin";
-        }
-    }
+            return new ResponseEntity<>(userEntity, HttpStatus.OK);
+        }}
 
     @GetMapping("/auth/update")
     public ResponseEntity<User> updatePage(@AuthenticationPrincipal PrincipalDetails principalDetails){
@@ -66,8 +65,9 @@ public class AuthController {
 
     
     @PatchMapping("/auth/update")
-    public ResponseEntity<User> userUpdate(User user){
-        User userUpdate = authService.userUpdate(user);
+    public ResponseEntity<User> userUpdate(@RequestBody User user, @AuthenticationPrincipal PrincipalDetails principalDetails){
+        User userUpdate = authService.userUpdate(user, principalDetails);
+        principalDetails.setUser(userUpdate);
         return new ResponseEntity<>(userUpdate, HttpStatus.OK);
     }
 }

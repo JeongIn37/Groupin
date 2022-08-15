@@ -53,7 +53,22 @@ public class GroupProposalService {
         }
     }
 
-    public void applyList(){
-
+    public GroupProposal admitApply(int proposalId){
+        GroupProposal applyUser = groupProposalRepository.findById(proposalId);
+        applyUser.setStatus("승인 완료");
+        return groupProposalRepository.save(applyUser);
     }
+
+    public GroupProposal waiting(int proposalId){
+        GroupProposal gp = groupProposalRepository.findById(proposalId);
+        gp.setStatus("승인 대기 중");
+        return groupProposalRepository.save(gp);
+    }
+
+    public GroupProposal rejectApply(int proposalId){
+        GroupProposal gp = groupProposalRepository.findById(proposalId);
+        gp.setStatus("승인 거절");
+        return groupProposalRepository.save(gp);
+    }
+
 }
