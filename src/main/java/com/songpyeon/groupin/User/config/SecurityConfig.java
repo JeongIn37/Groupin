@@ -23,10 +23,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/auth/signin")
-                .loginProcessingUrl("/auth/signin")
-                .usernameParameter("id")
-                .defaultSuccessUrl("/");
+                    .loginPage("/auth/signin")
+                    .loginProcessingUrl("/auth/signin")
+                    .usernameParameter("id")
+                    .defaultSuccessUrl("/")
+                .and()
+                .logout()
+                    .logoutUrl("/auth/signout");
 
     }
 }
