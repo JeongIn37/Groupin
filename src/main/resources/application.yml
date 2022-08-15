@@ -53,7 +53,7 @@ spring:
       password:
 
 file:
-  path: C:/workspace/springbootwork/upload/
-  #path: /Users/jeongin/WORKSPACE/Spring/upload/
+  #path: C:/workspace/springbootwork/upload/
+  path: /Users/jeongin/WORKSPACE/Spring/upload/
 
 
