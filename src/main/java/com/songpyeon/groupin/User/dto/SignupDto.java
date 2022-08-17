@@ -19,7 +19,7 @@ public class SignupDto {
     @NotBlank
     private String email;
     @NotNull
-    private String region;
+    private int region;
 
 
     public User toEntity(){

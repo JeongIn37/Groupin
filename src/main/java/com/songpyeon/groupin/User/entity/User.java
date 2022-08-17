@@ -27,7 +27,7 @@ public class User {
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
-    private String region;
+    private int region;
 
     private String role;  //권한
     private String profileImageUrl;  //사진
