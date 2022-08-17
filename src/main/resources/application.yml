@@ -28,15 +28,16 @@ spring:
 #    username: root
 #    password: cos1234
   datasource:
-      url: ${CLEARDB_DATABASE_URL}
-      username: ${DB_USER}
-      password: ${DB_PASSWORD}
+      url: ${CLEARDB_SILVER_URL}
+      username: ${ClearDB_USER}
+      password: ${ClearDB_PASSWORD}
+
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # Could not fetch the SequenceInformation from the database 에러 해결
     open-in-view: true
     hibernate:
-      ddl-auto: update # update: 데이터 INSERT 후 서버 재실행해도 남아있음 / create: 서버 재실행시 INSERT된 데이터 사라짐 / none: 배포 후 사용
+      ddl-auto: none # update: 데이터 INSERT 후 서버 재실행해도 남아있음 / create: 서버 재실행시 INSERT된 데이터 사라짐 / none: 배포 후 사용
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
