@@ -1,5 +1,6 @@
 package com.songpyeon.groupin.User.controller;
 
+import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.handler.ex.CustomValidationException;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -69,5 +71,11 @@ public class AuthController {
         User userUpdate = authService.userUpdate(user, principalDetails);
         principalDetails.setUser(userUpdate);
         return new ResponseEntity<>(userUpdate, HttpStatus.OK);
+    }
+
+    @GetMapping("/auth/users")
+    public ResponseEntity<List<User>> allUsers(){
+        List<User> users = authService.allUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 }

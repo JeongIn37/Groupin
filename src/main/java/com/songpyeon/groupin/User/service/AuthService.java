@@ -1,5 +1,6 @@
 package com.songpyeon.groupin.User.service;
 
+import com.songpyeon.groupin.board.domain.Board;
 import com.songpyeon.groupin.config.auth.PrincipalDetails;
 import com.songpyeon.groupin.User.entity.User;
 import com.songpyeon.groupin.User.repository.UserRepository;
@@ -7,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -42,6 +45,11 @@ public class AuthService {
         persistance.setRegion(user.getRegion());
         System.out.println("persistance: " + persistance);
         return persistance;
+    }
+
+    public List<User> allUsers(){
+        List<User> users = userRepository.findAll();
+        return users;
     }
 
 }
